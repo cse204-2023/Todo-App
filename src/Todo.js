@@ -1,19 +1,18 @@
 import logo from './logo.svg';
 import './Todo.css';
+import Todo from './Todo';
 
 function Todo() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>groupname's ToDo App
-        </h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h2>Notes</h2>
-        <ul>
-          <li>Use CTRL+C or CMD+C to stop your React server.</li>
+      <h1 id="title"> To-Do List </h1>
+      <ul className="item-list">
+        <li className="listItem">
+          <input type="checkbox"/> 
+          <span className="itemtext" id="item1">Todo item 1</span>
+          <button className="deletebtn"> Delete </button>
+        </li>
         </ul>
       </header>
     </div>
