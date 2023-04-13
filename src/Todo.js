@@ -1,12 +1,11 @@
-import logo from './logo.svg';
 import './Todo.css';
-import Todo from './Todo';
+// import Todo from './Todo';
 
 function Todo() {
   return (
     <div className="App">
       <header className="App-header">
-      <h1 id="title"> To-Do List </h1>
+      {/* <h1 id="title"> To-Do List </h1> */}
       <ul className="item-list">
         <li className="listItem">
           <input type="checkbox"/> 

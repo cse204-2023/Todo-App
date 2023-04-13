@@ -1,74 +1,74 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,.1);
-  }
-  
-  h1 {
-    font-size: 36px;
-    margin: 0 0 20px;
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  form input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: 20px rgba(0,0,0);
-    background-color:  #f2f2f2;
-    border-radius: 4px 0 0 4px;
-  }
-  
-  form button[type="submit"] {
-    padding: 10px;
-    font-size: 16px;
-    background-color: rgb(0, 153, 255);
-    color: #fff;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-  }
-  
-  .item-list {
-    list-style-type:circle;
-    /* padding: 0;
-    margin: 0; */
-  }
-  
-  .item-list li {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .item-list li:last-child {
-    border-bottom: none;
-  }
-  
-  .itemtext {
-    flex: 1;
-    margin-right: 10px;
-  }
-  
-  .deletebtn {
-    padding: 5px 10px;
-    font-size: 14px;
-    background-color: #d3372b;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+h1 {
+  font-size: 36px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+form input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 20px rgba(0,0,0);
+  background-color:  #f2f2f2;
+  border-radius: 4px 0 0 4px;
+}
+
+form button[type="submit"] {
+  padding: 10px;
+  font-size: 16px;
+  background-color: rgb(0, 153, 255);
+  color: #fff;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.item-list {
+  list-style-type:circle;
+  /* padding: 0;
+  margin: 0; */
+}
+
+.item-list li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.item-list li:last-child {
+  border-bottom: none;
+}
+
+.itemtext {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.deletebtn {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #d3372b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
