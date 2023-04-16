@@ -1,19 +1,40 @@
 import './Todo.css';
-// import Todo from './Todo';
+import { useState } from 'react';
 
-function Todo() {
+function Todo(props) {
+  const [items, setItems] = useState([{id:1, text: props.text, checked:false}]);
+
+  const handleDelete = (id)=>{
+    setItems(items.filter((item,index)=>index !== id));
+  }
+
+  const handleCheck = (id) =>{
+    const updatedItems = items.map((item) =>{
+      if(item.id === id){
+        return {
+          ...item, 
+          checked: !item.checked, 
+          text: item.text,
+          // <span style={{textDecoration: "line-through"}}>{item.text}</span>
+          textDecoration: item.checked ? "none" : "line-through"
+        };
+      }
+      return item;
+    });
+    setItems(updatedItems);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-      {/* <h1 id="title"> To-Do List </h1> */}
+    <div className="TodoList">
       <ul className="item-list">
-        <li className="listItem">
-          <input type="checkbox"/> 
-          <span className="itemtext" id="item1">Todo item 1</span>
-          <button className="deletebtn"> Delete </button>
-        </li>
+        {items.map((item, index)=>(
+          <li className="listItem" key={item.id}>
+            <input type="checkbox" checked={item.checked} onChange={() => handleCheck(item.id)} /> 
+            <span className={item.checked ? "itemtext checked" : "itemtext"} id={item.id} style={{textDecoration: item.textDecoration}}>{item.text}</span>
+            <button className="deletebtn" onClick={()=> handleDelete(index)}> Delete </button>
+          </li>
+        ))}
         </ul>
-      </header>
     </div>
   );
 }
