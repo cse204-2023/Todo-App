@@ -2,36 +2,47 @@ import './Todo.css';
 import { useState } from 'react';
 
 function Todo(props) {
-  const [items, setItems] = useState([{id:1, text: props.text, checked:false}]);
+  const [items, setItems] = useState([{ id: 1, text: props.text, checked:false}]);
 
   const handleDelete = (id)=>{
-    setItems(items.filter((item,index)=>index !== id));
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("DELETE", `https://cse204.work/todos/${id}`, true);
+    xhttp.setRequestHeader("x-api-key", "5edab9-265ea3-6c36e5-5e2fcb-7da37d");
+    xhttp.send();
+    setItems(items.filter((id)=>id !== id));
   }
 
-  const handleCheck = (id) =>{
-    const updatedItems = items.map((item) =>{
-      if(item.id === id){
-        return {
-          ...item, 
-          checked: !item.checked, 
-          text: item.text,
-          // <span style={{textDecoration: "line-through"}}>{item.text}</span>
-          textDecoration: item.checked ? "none" : "line-through"
-        };
-      }
-      return item;
-    });
+  const handleCheck = (id) => {
+    const index = items.findIndex(item => item.id === id);
+    const updatedItem = {
+      ...items[index],
+      checked: !items[index].checked,
+      textDecoration: items[index].checked ? "none" : "line-through"
+    };
+
+    const updatedItems = [
+      ...items.slice(0, index),
+      updatedItem,
+      ...items.slice(index + 1)
+    ];
     setItems(updatedItems);
-  }
 
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("PUT", `https://cse204.work/todos/${id}`, true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.setRequestHeader("x-api-key", "5edab9-265ea3-6c36e5-5e2fcb-7da37d");
+    xhttp.send(JSON.stringify(updatedItem));
+
+  };
+  
   return (
     <div className="TodoList">
       <ul className="item-list">
         {items.map((item, index)=>(
           <li className="listItem" key={item.id}>
-            <input type="checkbox" checked={item.checked} onChange={() => handleCheck(item.id)} /> 
-            <span className={item.checked ? "itemtext checked" : "itemtext"} id={item.id} style={{textDecoration: item.textDecoration}}>{item.text}</span>
-            <button className="deletebtn" onClick={()=> handleDelete(index)}> Delete </button>
+            <input type="checkbox" checked={item.checked} onChange={() => handleCheck(item.id)} />
+            <span className={item.checked ? "itemtext checked" : "itemtext"} id={item.id} style={{textDecoration: item.checked ? "line-through" : "none"}}>{item.text}</span>
+            <button className="deletebtn" onClick={()=> handleDelete(props.id)}> Delete </button>
           </li>
         ))}
         </ul>
