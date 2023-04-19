@@ -2,6 +2,7 @@ import './App.css';
 import Todo from './Todo';
 import NewTodo from './NewTodo';
 import { useState, useEffect } from 'react';
+import Sort from './Sort';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -43,6 +44,7 @@ function App() {
         <section class="container">
           <h1 id="title"> To-Do List </h1>
           <NewTodo onAddTodo={addTodoHandler} />
+          <Sort></Sort>
           <ul className='item-list'>
             {todos.map((todo) => (
               <Todo key={todo.id} text={todo.text} id={todo.id} />

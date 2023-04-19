@@ -2,7 +2,7 @@ import './Todo.css';
 import { useState } from 'react';
 
 function Todo(props) {
-  const [items, setItems] = useState([{ id: 1, text: props.text, checked:false}]);
+  const [items, setItems] = useState([{ text: props.text, checked:false}]);
 
   const handleDelete = (id)=>{
     const xhttp = new XMLHttpRequest();
@@ -10,6 +10,7 @@ function Todo(props) {
     xhttp.setRequestHeader("x-api-key", "5edab9-265ea3-6c36e5-5e2fcb-7da37d");
     xhttp.send();
     setItems(items.filter((id)=>id !== id));
+    console.log("Items:", items);
   }
 
   const handleCheck = (id) => {
@@ -32,6 +33,7 @@ function Todo(props) {
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.setRequestHeader("x-api-key", "5edab9-265ea3-6c36e5-5e2fcb-7da37d");
     xhttp.send(JSON.stringify(updatedItem));
+    console.log("Items:", items);
 
   };
   
