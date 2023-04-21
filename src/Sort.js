@@ -1,15 +1,15 @@
 import './Sort.css';
 
-function Sort(){
-    const sortHandler = (event)=>{
+function Sort({onSort}){
+    const sortHandler = (event) => {
         event.preventDefault();
-
-    }
+        onSort();
+      };
 
     return(
         <div className='sort'>
             <form>
-                <button className='sortButton'> Sort Alphabetically </button>
+                <button className='sortButton' onClick={sortHandler}> Sort Alphabetically </button>
             </form>
         </div>
     )

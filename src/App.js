@@ -6,6 +6,7 @@ import Sort from './Sort';
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [sortOrder, setSortOrder] = useState("default");
 
   useEffect(() => {
     const xhttp = new XMLHttpRequest();
@@ -38,15 +39,24 @@ function App() {
     xhttp.send(JSON.stringify({ text: todo.text }));
   }
 
+  const sortedTodos = [...todos].sort((a, b) => {
+    if (sortOrder === "alphabetical") {
+      return a.text.localeCompare(b.text);
+    } else {
+      return 0;
+    }
+  });
+
   return (
     <div className="App">
       <header className="App-header">
         <section class="container">
           <h1 id="title"> To-Do List </h1>
           <NewTodo onAddTodo={addTodoHandler} />
-          <Sort></Sort>
+          {/* <Sort></Sort> */}
+          <Sort onSort={() => setSortOrder("alphabetical")} />
           <ul className='item-list'>
-            {todos.map((todo) => (
+            {sortedTodos.map((todo) => (
               <Todo key={todo.id} text={todo.text} id={todo.id} />
             ))}
           </ul>

@@ -2,7 +2,7 @@ import './Todo.css';
 import { useState } from 'react';
 
 function Todo(props) {
-  const [items, setItems] = useState([{ text: props.text, checked:false}]);
+  const [items, setItems] = useState([{ id:props.id, text: props.text, checked: false}]);
 
   const handleDelete = (id)=>{
     const xhttp = new XMLHttpRequest();
@@ -14,12 +14,18 @@ function Todo(props) {
   }
 
   const handleCheck = (id) => {
+    console.log("Items:", items);
+    console.log("Props:", props);
     const index = items.findIndex(item => item.id === id);
     const updatedItem = {
       ...items[index],
       checked: !items[index].checked,
-      textDecoration: items[index].checked ? "none" : "line-through"
+      // textDecoration: items[index].checked ? "none" : "line-through"
     };
+
+    // const data = {
+    //   checked: true
+    // };
 
     const updatedItems = [
       ...items.slice(0, index),
@@ -27,14 +33,23 @@ function Todo(props) {
       ...items.slice(index + 1)
     ];
     setItems(updatedItems);
+    console.log(updatedItems);
 
     const xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var todo = JSON.parse(this.responseText);
+        console.log(todo);
+      }
+    };
+
     xhttp.open("PUT", `https://cse204.work/todos/${id}`, true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.setRequestHeader("x-api-key", "5edab9-265ea3-6c36e5-5e2fcb-7da37d");
-    xhttp.send(JSON.stringify(updatedItem));
-    console.log("Items:", items);
+    xhttp.send(JSON.stringify(updatedItem));   
 
+    console.log(JSON.stringify(updatedItem));
   };
   
   return (
