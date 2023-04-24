@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/09-todo-react-kaan-david/static/css/main.36b44a9f.css",
-    "main.js": "/09-todo-react-kaan-david/static/js/main.09fbb889.js",
+    "main.css": "/09-todo-react-kaan-david/static/css/main.8a93c3c3.css",
+    "main.js": "/09-todo-react-kaan-david/static/js/main.01934530.js",
     "static/media/logo.svg": "/09-todo-react-kaan-david/static/media/logo.cf1ad5ea55bdf7ea6e8c68b1ae6ee00b.svg",
     "index.html": "/09-todo-react-kaan-david/index.html",
-    "main.36b44a9f.css.map": "/09-todo-react-kaan-david/static/css/main.36b44a9f.css.map",
-    "main.09fbb889.js.map": "/09-todo-react-kaan-david/static/js/main.09fbb889.js.map"
+    "main.8a93c3c3.css.map": "/09-todo-react-kaan-david/static/css/main.8a93c3c3.css.map",
+    "main.01934530.js.map": "/09-todo-react-kaan-david/static/js/main.01934530.js.map"
   },
   "entrypoints": [
-    "static/css/main.36b44a9f.css",
-    "static/js/main.09fbb889.js"
+    "static/css/main.8a93c3c3.css",
+    "static/js/main.01934530.js"
   ]
 }
